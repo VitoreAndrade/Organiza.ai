@@ -19,11 +19,13 @@ public class Dividas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "total")
-    private Long valorTotal;
-    private Long valorPago;
-    private Long valorRestante;
-    private int qtdParcelas;
+    private int valorTotal;
+    private int valorPago;
+    private int valorRestante;
+//    private int qtdParcelas;
     private String descricao;
+    @Enumerated(EnumType.STRING)
+    private SituacaoDividas situacao;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
@@ -35,8 +37,7 @@ public class Dividas {
         this.ativo = true;
         this.usuario = dados.idUsuario();
         this.valorPago = dados.valorPago();
-        this.valorRestante = dados.valorRestante();
-        this.qtdParcelas = dados.qtdParcelas();
+//        this.qtdParcelas = dados.qtdParcelas();
         this.valorTotal = dados.valorTotal();
         this.descricao = dados.descricao();
     }
@@ -53,6 +54,14 @@ public class Dividas {
         this.ativo = ativo;
     }
 
+    public SituacaoDividas getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoDividas situacao) {
+        this.situacao = situacao;
+    }
+
     public Long getId() {
         return id;
     }
@@ -61,36 +70,29 @@ public class Dividas {
         this.id = id;
     }
 
-    public Long getValorTotal() {
+
+    public int getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(Long valorTotal) {
+    public void setValorTotal(int valorTotal) {
         this.valorTotal = valorTotal;
     }
 
-    public Long getValorPago() {
+    public int getValorPago() {
         return valorPago;
     }
 
-    public void setValorPago(Long valorPago) {
+    public void setValorPago(int valorPago) {
         this.valorPago = valorPago;
     }
 
-    public Long getValorRestante() {
+    public int getValorRestante() {
         return valorRestante;
     }
 
-    public void setValorRestante(Long valorRestante) {
+    public void setValorRestante(int valorRestante) {
         this.valorRestante = valorRestante;
-    }
-
-    public int getQtdParcelas() {
-        return qtdParcelas;
-    }
-
-    public void setQtdParcelas(int qtdParcelas) {
-        this.qtdParcelas = qtdParcelas;
     }
 
     public String getDescricao() {

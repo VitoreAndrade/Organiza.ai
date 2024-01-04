@@ -7,13 +7,13 @@ public record DadosCadastroDividasDto(
        @NotNull
        Usuario idUsuario,
        @NotNull
-       Long valorTotal,
+       int valorTotal,
        @NotNull
-       Long valorPago,
-       @NotNull
-       Long valorRestante,
-       @NotNull
-       int qtdParcelas,
+       int valorPago,
+//       @NotNull
+//       Long valorRestante,
+//       @NotNull
+//       int qtdParcelas,
        @NotNull
        String descricao
 

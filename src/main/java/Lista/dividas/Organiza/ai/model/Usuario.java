@@ -37,6 +37,14 @@ public class Usuario {
         this.email = dados.email();
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
     public List<Dividas> getDividas() {
         return dividas;
     }
