@@ -47,8 +47,12 @@ public class DividasService {
             return ResponseEntity.ok().body(dividas);
 
         }
+    public List<Dividas> obterUsuarioComDividas(Long idDividas) {
+        return dividasRepository.findUsuarioWithDividas(idDividas);
+    }
 
-    public ResponseEntity<Page<DadosListagemDividaDto>> listar(Pageable paginacao) {
+
+        public ResponseEntity<Page<DadosListagemDividaDto>> listar(Pageable paginacao) {
         var page = dividasRepository.findAllByAtivoTrue(paginacao).map(dividas -> new DadosListagemDividaDto(dividas));
         return ResponseEntity.ok(page);
     }

@@ -1,12 +1,12 @@
 package Lista.dividas.Organiza.ai.model;
 
 import Lista.dividas.Organiza.ai.dto.DadosCadastroUsuarioDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -26,8 +26,8 @@ public class Usuario {
     private String email;
     private boolean ativo;
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
     private List<Dividas> dividas;
-
 
     public Usuario (DadosCadastroUsuarioDto dados){
         this.ativo = true;
@@ -45,9 +45,7 @@ public class Usuario {
         this.ativo = ativo;
     }
 
-    public List<Dividas> getDividas() {
-        return dividas;
-    }
+
 
     public void setDividas(List<Dividas> dividas) {
         this.dividas = dividas;
@@ -61,9 +59,7 @@ public class Usuario {
         this.ativo = false;
     }
 
-    public Long getId() {
-        return id;
-    }
+
 
     public void setId(Long id) {
         this.id = id;

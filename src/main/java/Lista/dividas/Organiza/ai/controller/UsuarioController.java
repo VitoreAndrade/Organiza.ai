@@ -1,6 +1,8 @@
 package Lista.dividas.Organiza.ai.controller;
 
 import Lista.dividas.Organiza.ai.dto.*;
+import Lista.dividas.Organiza.ai.model.Dividas;
+import Lista.dividas.Organiza.ai.model.Usuario;
 import Lista.dividas.Organiza.ai.service.UsuarioService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("usuarios")
+@CrossOrigin(origins = "http://localhost:5173")
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
@@ -25,10 +29,16 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<DadosListagemUsuarioDto>>listar(@PageableDefault(size = 10, sort ={"nome"}) Pageable paginacao) {
+    public ResponseEntity<Page<DadosListagemUsuarioDto>>listar( Pageable paginacao) {
         return usuarioService.listar(paginacao);
 
     }
+//    @GetMapping
+//    public ResponseEntity<List<Dividas>>obterDividas(@PathVariable Usuario user){
+//        List<Dividas> dividas = usuarioService.obterDividasPorUsuario(user.getId());
+//        return ResponseEntity.ok().build();
+//    }
+
 
     @DeleteMapping
     @Transactional

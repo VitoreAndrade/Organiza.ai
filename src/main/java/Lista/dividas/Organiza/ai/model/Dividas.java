@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Table(name = "dividas")
 @Entity(name = "Dividas")
 @Getter
@@ -30,6 +32,8 @@ public class Dividas {
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
+
+
 
     private boolean ativo;
 

@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UsuarioService {
     @Autowired
@@ -25,16 +27,12 @@ public class UsuarioService {
     }
 
 
-//    public ResponseEntity<Page<DadosListagemUsuarioDto>> listar(Pageable paginacao) {
-//        var page = usuarioRepository.findAllByAtivoTrue  (paginacao).map(DadosListagemUsuarioDto::new);
-//        return ResponseEntity.ok(page);
-//    }
     public ResponseEntity<Page<DadosListagemUsuarioDto>> listar(Pageable paginacao) {
-        var page = usuarioRepository.findAllByAtivoTrue(paginacao).map(usuario -> new DadosListagemUsuarioDto(usuario));
+        var page = usuarioRepository.findAllByAtivoTrue  (paginacao).map(DadosListagemUsuarioDto::new);
         return ResponseEntity.ok(page);
     }
 
-
+//
     public ResponseEntity atualizar(DadosAtualizacaoUsuarioDto dados){
         Usuario usuarioAtuliza = usuarioRepository.findById(dados.idUsuario()).get();
         var usuario = usuarioRepository.findById(dados.idUsuario());
